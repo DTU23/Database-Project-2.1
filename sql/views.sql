@@ -18,6 +18,7 @@ CREATE OR REPLACE VIEW product_batch_list AS
 CREATE OR REPLACE VIEW user_list AS
   SELECT opr_id, opr_navn, cpr, admin, role FROM operatoer;
 
+# Recipe List (Pharmacist)
 CREATE OR REPLACE VIEW recipe_list AS
   SELECT recept_id, recept_navn, raavare_navn, nom_netto, tolerance
   FROM recept NATURAL JOIN receptkomponent NATURAL JOIN raavare;
