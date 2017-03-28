@@ -1,5 +1,5 @@
 DROP PROCEDURE IF EXISTS get_batch_details_from_id;
-DROP PROCEDURE IF EXISTS create_product_batch_from_recept_id;
+DROP PROCEDURE IF EXISTS create_product_batch_from_recipe_id;
 DROP PROCEDURE IF EXISTS create_produce_batch_from_produce_id;
 DROP PROCEDURE IF EXISTS create_recipe;
 DROP PROCEDURE IF EXISTS create_produce;
@@ -8,35 +8,33 @@ DROP PROCEDURE IF EXISTS create_recipe_component;
 DROP PROCEDURE IF EXISTS create_operator;
 DROP PROCEDURE IF EXISTS update_operator;
 DROP PROCEDURE IF EXISTS get_operator_name_from_id;
-/**
 
+/**
+Foreman Procedures
  */
 DELIMITER //
 CREATE PROCEDURE get_batch_details_from_id
 (IN input INT)
 BEGIN
-  SELECT produktbatchkomponent.rb_id, raavare_navn, leverandoer, netto, opr_id
-  FROM produktbatchkomponent NATURAL JOIN  raavare NATURAL JOIN  raavarebatch
-  WHERE produktbatchkomponent.pb_id = input;
+  SELECT productbatchcomponent.rb_id, produce_name, supplier, netto, opr_id
+  FROM productbatchcomponent NATURAL JOIN  raavare NATURAL JOIN  producebatch
+  WHERE productbatchcomponent.pb_id = input;
 END //
 DELIMITER ;
 
-/**
-Foreman
- */
 DELIMITER //
-CREATE PROCEDURE create_product_batch_from_recept_id
-(IN recept_id_input INT)
+CREATE PROCEDURE create_product_batch_from_recipe_id
+(IN recipe_id_input INT)
 BEGIN
-  INSERT INTO produktbatch(status, recept_id) VALUES(0, recept_id_input);
+  INSERT INTO productbatch(status, recipe_id) VALUES(0, recipe_id_input);
 END //
 DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE create_produce_batch_from_produce_id
-(IN input_maengde DOUBLE, IN input_rb_id INT)
+(IN input_amount DOUBLE, IN input_rb_id INT)
 BEGIN
-  INSERT INTO raavarebatch(maengde, raavare_id) VALUES(input_maengde, input_rb_id);
+  INSERT INTO producebatch(amount, produce_id) VALUES(input_amount, input_rb_id);
 END //
 DELIMITER ;
 
@@ -44,26 +42,26 @@ DELIMITER //
 CREATE PROCEDURE delete_produce_batch_from_produce_id
 (IN input_rb_id INT)
 BEGIN
-  DELETE FROM raavarebatch WHERE raavarebatch.raavare_id = input_rb_id;
+  DELETE FROM producebatch WHERE producebatch.produce_id = input_rb_id;
 END //
 DELIMITER ;
 
 /**
-Pharmacist
+Pharmacist Procedures
  */
 DELIMITER //
 CREATE PROCEDURE create_recipe
-(IN input_recept_navn TEXT)
+(IN input_recipe_name TEXT)
 BEGIN
-  INSERT INTO recept(recept_navn) VALUES(input_recept_navn);
+  INSERT INTO recipe(recipe_name) VALUES(input_recipe_name);
 END //
 DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE create_produce
-(IN input_produce_name TEXT, IN input_produce_leverandoer TEXT)
+(IN input_produce_name TEXT, IN input_produce_supplier TEXT)
 BEGIN
-  INSERT INTO raavare(raavare_navn, leverandoer) VALUES(input_produce_name, input_produce_leverandoer);
+  INSERT INTO raavare(produce_name, supplier) VALUES(input_produce_name, input_produce_supplier);
 END //
 DELIMITER ;
 
@@ -76,13 +74,13 @@ CREATE PROCEDURE create_recipe_component
   IN input_tolerance DOUBLE
 )
 BEGIN
-  INSERT INTO receptkomponent(recept_id, raavare_id, nom_netto, tolerance)
+  INSERT INTO recipecomponent(recipe_id, produce_id, nom_netto, tolerance)
   VALUES(input_recipe_id, input_produce_id, input_netto, input_tolerance);
 END //
 DELIMITER ;
 
 /**
-Admin
+Admin procedures
 */
 DELIMITER //
 CREATE PROCEDURE create_operator
@@ -94,7 +92,8 @@ CREATE PROCEDURE create_operator
   IN input_password TEXT
 )
 BEGIN
-  INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES(input_id, input_name, input_initials, input_cpr, input_password);
+  INSERT INTO operator(opr_id, opr_name, ini, cpr, password)
+  VALUES(input_id, input_name, input_initials, input_cpr, input_password);
 END //
 DELIMITER ;
 
@@ -108,8 +107,8 @@ CREATE PROCEDURE update_operator
   IN input_password TEXT
 )
 BEGIN
-  UPDATE operatoer SET
-    opr_navn=input_name,
+  UPDATE operator SET
+    opr_name=input_name,
     ini = input_initials,
     cpr = input_cpr,
     password = input_password
@@ -123,6 +122,6 @@ CREATE PROCEDURE get_operator_name_from_id
   IN input_id INT
 )
 BEGIN
-  SELECT opr_navn FROM operatoer WHERE opr_id = input_id;
+  SELECT opr_name FROM operator WHERE opr_id = input_id;
 END //
 DELIMITER ;
