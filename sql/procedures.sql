@@ -7,3 +7,11 @@ BEGIN
   WHERE produktbatchkomponent.pb_id = input;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE new_product_batch
+(IN recept_id_input INT)
+BEGIN
+  INSERT INTO produktbatch(status, recept_id) VALUES(0, recept_id_input);
+END //
+DELIMITER ;
