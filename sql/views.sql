@@ -17,8 +17,3 @@ CREATE OR REPLACE VIEW product_batch_list AS
 # Operator List (Admin)
 CREATE OR REPLACE VIEW operator_list AS
   SELECT opr_id, opr_name, cpr, admin, role FROM operator;
-
-# Recipe List (Pharmacist)
-CREATE OR REPLACE VIEW recipe_list AS
-  SELECT recipe_id, recipe_name
-  FROM recipe;
