@@ -7,7 +7,15 @@ DROP TABLE IF EXISTS recept;
 DROP TABLE IF EXISTS raavarebatch;
 DROP TABLE IF EXISTS raavare;
 
-CREATE TABLE operatoer(opr_id INT PRIMARY KEY, opr_navn TEXT, ini TEXT, cpr TEXT, password TEXT) ENGINE=innoDB;
+CREATE TABLE operatoer(
+   opr_id INT PRIMARY KEY,
+   opr_navn TEXT,
+   ini TEXT,
+   cpr TEXT,
+   password TEXT,
+   admin BOOLEAN DEFAULT FALSE,
+   role ENUM('Operator', 'Foreman', 'Pharmacist', 'None') DEFAULT 'None'
+) ENGINE=innoDB;
  
 CREATE TABLE raavare(raavare_id INT PRIMARY KEY, raavare_navn TEXT, leverandoer TEXT) ENGINE=innoDB;
 
