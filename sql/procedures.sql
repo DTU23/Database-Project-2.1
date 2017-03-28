@@ -1,10 +1,10 @@
 DROP PROCEDURE IF EXISTS get_batch_details_from_id;
 DROP PROCEDURE IF EXISTS create_product_batch_from_recept_id;
 DROP PROCEDURE IF EXISTS create_produce_batch_from_produce_id;
-DROP PROCEDURE IF EXISTS create_prescription;
+DROP PROCEDURE IF EXISTS create_recipe;
 DROP PROCEDURE IF EXISTS create_produce;
 DROP PROCEDURE IF EXISTS delete_produce_batch_from_produce_id;
-DROP PROCEDURE IF EXISTS create_prescription_component;
+DROP PROCEDURE IF EXISTS create_recipe_component;
 DROP PROCEDURE IF EXISTS create_operator;
 DROP PROCEDURE IF EXISTS update_operator;
 DROP PROCEDURE IF EXISTS get_operator_name_from_id;
@@ -52,7 +52,7 @@ DELIMITER ;
 Pharmacist
  */
 DELIMITER //
-CREATE PROCEDURE create_prescription
+CREATE PROCEDURE create_recipe
 (IN input_recept_navn TEXT)
 BEGIN
   INSERT INTO recept(recept_navn) VALUES(input_recept_navn);
@@ -68,16 +68,16 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE create_prescription_component
+CREATE PROCEDURE create_recipe_component
 (
-  IN input_prescription_id INT,
+  IN input_recipe_id INT,
   IN input_produce_id INT,
   IN input_netto DOUBLE,
   IN input_tolerance DOUBLE
 )
 BEGIN
   INSERT INTO receptkomponent(recept_id, raavare_id, nom_netto, tolerance)
-  VALUES(input_prescription_id, input_produce_id, input_netto, input_tolerance);
+  VALUES(input_recipe_id, input_produce_id, input_netto, input_tolerance);
 END //
 DELIMITER ;
 
