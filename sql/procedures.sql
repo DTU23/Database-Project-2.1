@@ -34,7 +34,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE create_produce_batch_from_produce_id
-(IN input_maengde INT, IN input_rb_id INT)
+(IN input_maengde DOUBLE, IN input_rb_id INT)
 BEGIN
   INSERT INTO raavarebatch(maengde, raavare_id) VALUES(input_maengde, input_rb_id);
 END //
@@ -53,7 +53,7 @@ Pharmacist
  */
 DELIMITER //
 CREATE PROCEDURE create_prescription
-(IN input_recept_navn INT)
+(IN input_recept_navn TEXT)
 BEGIN
   INSERT INTO recept(recept_navn) VALUES(input_recept_navn);
 END //
@@ -61,7 +61,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE create_produce
-(IN input_produce_name INT, IN input_produce_leverandoer INT)
+(IN input_produce_name TEXT, IN input_produce_leverandoer TEXT)
 BEGIN
   INSERT INTO raavare(raavare_navn, leverandoer) VALUES(input_produce_name, input_produce_leverandoer);
 END //
@@ -72,8 +72,8 @@ CREATE PROCEDURE create_prescription_component
 (
   IN input_prescription_id INT,
   IN input_produce_id INT,
-  IN input_netto INT,
-  IN input_tolerance INT
+  IN input_netto DOUBLE,
+  IN input_tolerance DOUBLE
 )
 BEGIN
   INSERT INTO receptkomponent(recept_id, raavare_id, nom_netto, tolerance)
@@ -88,10 +88,10 @@ DELIMITER //
 CREATE PROCEDURE create_operator
 (
   IN input_id INT,
-  IN input_name INT,
-  IN input_initials INT,
-  IN input_cpr INT,
-  IN input_password INT
+  IN input_name TEXT,
+  IN input_initials TEXT,
+  IN input_cpr TEXT,
+  IN input_password TEXT
 )
 BEGIN
   INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES(input_id, input_name, input_initials, input_cpr, input_password);
@@ -102,10 +102,10 @@ DELIMITER //
 CREATE PROCEDURE update_operator
 (
   IN input_id INT,
-  IN input_name INT,
-  IN input_initials INT,
-  IN input_cpr INT,
-  IN input_password INT
+  IN input_name TEXT,
+  IN input_initials TEXT,
+  IN input_cpr TEXT,
+  IN input_password TEXT
 )
 BEGIN
   UPDATE operatoer SET
