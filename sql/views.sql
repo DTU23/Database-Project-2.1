@@ -2,8 +2,8 @@ CREATE OR REPLACE VIEW user_list AS
   SELECT opr_id, opr_navn, cpr, admin, role FROM operatoer;
 
 CREATE OR REPLACE VIEW produce_overview AS
-  SELECT raavare.raavare_id, raavare.raavare_navn, raavare.leverandoer, SUM(maengde) AS "maengde" FROM raavare, raavarebatch
-  WHERE raavare.raavare_id = raavarebatch.raavare_id OR raavare.raavare_id;
+  SELECT raavare.raavare_id, raavare.raavare_navn, SUM(raavarebatch.maengde) AS "maengde" FROM raavare NATURAL JOIN raavarebatch
+  GROUP BY raavare.raavare_navn;
 
 CREATE OR REPLACE VIEW recipe_list AS
   SELECT recept_id, recept_navn, raavare_navn, nom_netto, tolerance
