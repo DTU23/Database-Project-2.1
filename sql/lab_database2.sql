@@ -17,14 +17,14 @@ CREATE TABLE operatoer(
    role ENUM('Operator', 'Foreman', 'Pharmacist', 'None') DEFAULT 'None'
 ) ENGINE=innoDB;
  
-CREATE TABLE raavare(raavare_id INT PRIMARY KEY, raavare_navn TEXT, leverandoer TEXT) ENGINE=innoDB;
+CREATE TABLE raavare(raavare_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, raavare_navn TEXT, leverandoer TEXT) ENGINE=innoDB;
 
-CREATE TABLE raavarebatch(rb_id INT PRIMARY KEY, raavare_id INT, maengde REAL, 
+CREATE TABLE raavarebatch(rb_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, raavare_id INT, maengde REAL,
    FOREIGN KEY (raavare_id) REFERENCES raavare(raavare_id)) ENGINE=innoDB;
 
-CREATE TABLE recept(recept_id INT PRIMARY KEY, recept_navn TEXT) ENGINE=innoDB;
+CREATE TABLE recept(recept_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, recept_navn TEXT) ENGINE=innoDB;
 
-CREATE TABLE receptkomponent(recept_id INT, raavare_id INT, nom_netto REAL, tolerance REAL, 
+CREATE TABLE receptkomponent(recept_id INT, raavare_id INT, nom_netto REAL, tolerance REAL,
    PRIMARY KEY (recept_id, raavare_id), 
    FOREIGN KEY (recept_id) REFERENCES recept(recept_id), 
    FOREIGN KEY (raavare_id) REFERENCES raavare(raavare_id)) ENGINE=innoDB;
