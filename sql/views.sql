@@ -15,10 +15,10 @@ CREATE OR REPLACE VIEW product_batch_list AS
     NATURAL JOIN recipe;
 
 # Operator List (Admin)
-CREATE OR REPLACE VIEW user_list AS
+CREATE OR REPLACE VIEW operator_list AS
   SELECT opr_id, opr_name, cpr, admin, role FROM operator;
 
 # Recipe List (Pharmacist)
 CREATE OR REPLACE VIEW recipe_list AS
-  SELECT recipe_id, recipe_name, produce_name, nom_netto, tolerance
-  FROM recipe NATURAL JOIN recipecomponent NATURAL JOIN raavare;
+  SELECT recipe_id, recipe_name
+  FROM recipe;
