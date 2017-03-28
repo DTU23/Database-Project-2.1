@@ -29,12 +29,12 @@ CREATE TABLE receptkomponent(recept_id INT, raavare_id INT, nom_netto REAL, tole
    FOREIGN KEY (recept_id) REFERENCES recept(recept_id), 
    FOREIGN KEY (raavare_id) REFERENCES raavare(raavare_id)) ENGINE=innoDB;
 
-CREATE TABLE produktbatch(pb_id INT PRIMARY KEY, status INT, recept_id INT, 
+CREATE TABLE produktbatch(pb_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, status INT, recept_id INT,
    FOREIGN KEY (recept_id) REFERENCES recept(recept_id)) ENGINE=innoDB;
 
-CREATE TABLE produktbatchkomponent(pb_id INT, rb_id INT, tara REAL, netto REAL, opr_id INT, 
-   PRIMARY KEY (pb_id, rb_id), 
-   FOREIGN KEY (pb_id) REFERENCES produktbatch(pb_id), 
+CREATE TABLE produktbatchkomponent(pb_id INT, rb_id INT, tara REAL, netto REAL, opr_id INT,
+   PRIMARY KEY (pb_id, rb_id),
+   FOREIGN KEY (pb_id) REFERENCES produktbatch(pb_id),
    FOREIGN KEY (rb_id) REFERENCES raavarebatch(rb_id), 
    FOREIGN KEY (opr_id) REFERENCES operatoer(opr_id)) ENGINE=innoDB;
 
