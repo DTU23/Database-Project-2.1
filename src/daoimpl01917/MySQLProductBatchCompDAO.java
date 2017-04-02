@@ -12,6 +12,7 @@ import java.util.List;
 
 public class MySQLProductBatchCompDAO implements ProductBatchCompDAO {
 
+	private List<ProductBatchCompDTO> list = new ArrayList<ProductBatchCompDTO>();
 	@Override
 	public ProductBatchCompDTO getProductBatchComp(int pbId, int rbId) throws DALException {
 		return null;
@@ -19,13 +20,13 @@ public class MySQLProductBatchCompDAO implements ProductBatchCompDAO {
 
 	@Override
 	public List<ProductBatchCompDTO> getProductBatchCompList(int pbId) throws DALException {
-		List<ProductBatchCompDTO> list = new ArrayList<ProductBatchCompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM product_batch_list;");
+		ResultSet rs = Connector.doQuery("CALL get_batch_details_from_id("+pbId+");");
 		try
 		{
 			while (rs.next())
 			{
-				list.add(new ProductBatchCompDTO(rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recipe_id"), rs.getString("recipeName")));
+				list.add(new ProductBatchCompDTO(
+				));
 			}
 		}
 		catch (SQLException e) { throw new DALException(e); }
@@ -34,16 +35,17 @@ public class MySQLProductBatchCompDAO implements ProductBatchCompDAO {
 
 	@Override
 	public List<ProductBatchCompDTO> getProductBatchCompList() throws DALException {
-		return null;
+		return this.list;
 	}
 
 	@Override
 	public void createProductBatchComp(ProductBatchCompDTO productbatchcomponent) throws DALException {
-
+		list.add(productbatchcomponent);
 	}
 
 	@Override
 	public void updateProductBatchComp(ProductBatchCompDTO productbatchcomponent) throws DALException {
-
+		list.remove(productbatchcomponent);
+		list.add(productbatchcomponent);
 	}
 }
