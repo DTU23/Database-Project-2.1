@@ -3,23 +3,23 @@ package dto01917;
 public class ProduceBatchDTO
 {
 	int rbId;                     // i omraadet 1-99999999
-	int raavareId;             // i omraadet 1-99999999
-	double maengde;             // kan vaere negativ 
+	int amountId;             // i omraadet 1-99999999
+	double amount;             // kan vaere negativ 
 
-	public ProduceBatchDTO(int rbId, int raavareId, double maengde)
+	public ProduceBatchDTO(int rbId, int amountId, double amount)
 	{
 		this.rbId = rbId;
-		this.raavareId = raavareId;
-		this.maengde = maengde;
+		this.amountId = amountId;
+		this.amount = amount;
 	}
 	
 	public int getRbId() { return rbId; }
 	public void setRbId(int rbId) { this.rbId = rbId; }
-	public int getRaavareId() { return raavareId; }
-	public void setRaavareId(int raavareId) { this.raavareId = raavareId; }
-	public double getMaengde() { return maengde; }
-	public void setMaengde(double maengde) { this.maengde = maengde; }
+	public int getProduceId() { return amountId; }
+	public void setProduceId(int amountId) { this.amountId = amountId; }
+	public double getAmount() { return amount; }
+	public void setAmount(double amount) { this.amount = amount; }
 	public String toString() { 
-		return rbId + "\t" + raavareId +"\t" + maengde; 
+		return rbId + "\t" + amountId +"\t" + amount; 
 	}
 }
