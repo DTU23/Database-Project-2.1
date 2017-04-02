@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS operator;
 DROP TABLE IF EXISTS recipecomponent;
 DROP TABLE IF EXISTS recipe;
 DROP TABLE IF EXISTS producebatch;
-DROP TABLE IF EXISTS raavare;
+DROP TABLE IF EXISTS produce;
 
 CREATE TABLE operator(
    opr_id INT PRIMARY KEY,
@@ -17,17 +17,17 @@ CREATE TABLE operator(
    role ENUM('Operator', 'Foreman', 'Pharmacist', 'None') DEFAULT 'None'
 ) ENGINE=innoDB;
  
-CREATE TABLE raavare(produce_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, produce_name TEXT, supplier TEXT) ENGINE=innoDB;
+CREATE TABLE produce(produce_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, produce_name TEXT, supplier TEXT) ENGINE=innoDB;
 
 CREATE TABLE producebatch(rb_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, produce_id INT, amount REAL,
-   FOREIGN KEY (produce_id) REFERENCES raavare(produce_id)) ENGINE=innoDB;
+   FOREIGN KEY (produce_id) REFERENCES produce(produce_id)) ENGINE=innoDB;
 
 CREATE TABLE recipe(recipe_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, recipe_name TEXT) ENGINE=innoDB;
 
 CREATE TABLE recipecomponent(recipe_id INT, produce_id INT, nom_netto REAL, tolerance REAL,
    PRIMARY KEY (recipe_id, produce_id),
    FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id),
-   FOREIGN KEY (produce_id) REFERENCES raavare(produce_id)) ENGINE=innoDB;
+   FOREIGN KEY (produce_id) REFERENCES produce(produce_id)) ENGINE=innoDB;
 
 CREATE TABLE productbatch(pb_id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, status INT, recipe_id INT,
    FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id)) ENGINE=innoDB;
@@ -44,7 +44,7 @@ INSERT INTO operator(opr_id, opr_name, ini, cpr, password) VALUES
 (2, 'Antonella B', 'AB', '080880-8008', 'atoJ21v'),
 (3, 'Luigi C', 'LC', '090990-9009', 'jEfm5aQ');
 
-INSERT INTO raavare(produce_id, produce_name, supplier) VALUES
+INSERT INTO produce(produce_id, produce_name, supplier) VALUES
 (1, 'dej', 'Wawelka'),
 (2, 'tomat', 'Knoor'),
 (3, 'tomat', 'Veaubais'),

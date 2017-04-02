@@ -29,7 +29,7 @@ CREATE PROCEDURE get_batch_details_from_id
 (IN input INT)
 BEGIN
   SELECT productbatchcomponent.rb_id, produce_name, supplier, netto, opr_id
-  FROM productbatchcomponent NATURAL JOIN  raavare NATURAL JOIN  producebatch
+  FROM productbatchcomponent NATURAL JOIN  produce NATURAL JOIN  producebatch
   WHERE productbatchcomponent.pb_id = input;
 END //
 DELIMITER ;
@@ -73,7 +73,7 @@ DELIMITER //
 CREATE PROCEDURE create_produce
 (IN input_produce_name TEXT, IN input_produce_supplier TEXT)
 BEGIN
-  INSERT INTO raavare(produce_name, supplier) VALUES(input_produce_name, input_produce_supplier);
+  INSERT INTO produce(produce_name, supplier) VALUES(input_produce_name, input_produce_supplier);
 END //
 DELIMITER ;
 

@@ -1,13 +1,13 @@
-# Raavare Batch Liste (Foreman)
+# produce Batch Liste (Foreman)
 CREATE OR REPLACE VIEW produce_batch_list AS
-  SELECT producebatch.rb_id, raavare.produce_name, raavare.supplier, producebatch.amount FROM producebatch
-    INNER JOIN raavare WHERE raavare.produce_id = producebatch.produce_id;
+  SELECT producebatch.rb_id, produce.produce_name, produce.supplier, producebatch.amount FROM producebatch
+    INNER JOIN produce WHERE produce.produce_id = producebatch.produce_id;
 
-# Raavare Overview (Foreman)
+# produce Overview (Foreman)
 CREATE OR REPLACE VIEW produce_overview AS
-  SELECT raavare.produce_id, raavare.produce_name, SUM(producebatch.amount) AS "amount" FROM raavare
+  SELECT produce.produce_id, produce.produce_name, SUM(producebatch.amount) AS "amount" FROM produce
     NATURAL JOIN producebatch
-  GROUP BY raavare.produce_name;
+  GROUP BY produce.produce_name;
 
 # Product Batch List (Foreman)
 CREATE OR REPLACE VIEW product_batch_list AS
