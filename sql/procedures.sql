@@ -1,3 +1,4 @@
+DROP PROCEDURE IF EXISTS update_product_batch_status;
 DROP PROCEDURE IF EXISTS get_batch_details_from_id;
 DROP PROCEDURE IF EXISTS create_product_batch_from_recipe_id;
 DROP PROCEDURE IF EXISTS create_produce_batch_from_produce_id;
@@ -12,6 +13,17 @@ DROP PROCEDURE IF EXISTS get_operator_name_from_id;
 /**
 Foreman Procedures
  */
+DELIMITER //
+CREATE PROCEDURE update_product_batch_status
+(IN input_id INT,
+IN input_status INT)
+BEGIN
+  UPDATE productbatch SET
+    status=status
+  WHERE productbatch.pb_id = input_id;
+END //
+DELIMITER ;
+
 DELIMITER //
 CREATE PROCEDURE get_batch_details_from_id
 (IN input INT)
