@@ -14,8 +14,12 @@ public class MySQLProductBatchDAO implements ProductBatchDAO {
 
 	@Override
 	public ProductBatchDTO getProductBatch(int pbId) throws DALException {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs = Connector.doQuery("SELECT * FROM product_batch_list WHERE pb_id = " + pbId + ";");
+		try {
+			if (!rs.first()) throw new DALException("Product batch with id " + pbId + " does not exist");
+			return new ProductBatchDTO(rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recipe_id"), rs.getString("recipeName"));
+		}
+		catch (SQLException e) {throw new DALException(e); }
 	}
 
 	@Override
@@ -35,14 +39,11 @@ public class MySQLProductBatchDAO implements ProductBatchDAO {
 
 	@Override
 	public void createProductBatch(ProductBatchDTO productbatch) throws DALException {
-		// TODO Auto-generated method stub
-		
+		Connector.doUpdate("CALL create_product_batch_from_recipe_id(" + productbatch.getRecipeId() + ");");
 	}
 
 	@Override
 	public void updateProductBatch(ProductBatchDTO productbatch) throws DALException {
-		// TODO Auto-generated method stub
-		
+		Connector.doUpdate("CALL update_product_batch_status(" + productbatch.getStatus() + ");");
 	}
-
 }

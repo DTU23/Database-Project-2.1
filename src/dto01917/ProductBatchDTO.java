@@ -23,6 +23,6 @@ public class ProductBatchDTO
 	public void setRecipeId(int recipeId) { this.recipeId = recipeId; }
 	public String getRecipeName() { return this.recipeName; }
 	public void setRecipeName(String recipeName) { this.recipeName = recipeName; }
-	public String toString() { return pbId + "\t" + status + "\t" + recipeId; }
+	public String toString() { return pbId + "\t" + status + "\t" + recipeId + "\t" + recipeName; }
 }
 

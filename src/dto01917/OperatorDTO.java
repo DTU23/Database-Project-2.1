@@ -58,7 +58,5 @@ public class OperatorDTO
 	public void setAdmin(boolean admin) { this.admin = admin; }
     public String getRole() {return this.role; }
     public void setRole(String role) { this.role = role; }
-
-	
-	public String toString() { return oprId + "\t" + oprName + "\t" + ini + "\t" + cpr + "\t" + password; }
+	public String toString() { return oprId + "\t" + oprName + "\t" + ini + "\t" + cpr + "\t" + password + "\t" + admin + "\t" + role; }
 }
