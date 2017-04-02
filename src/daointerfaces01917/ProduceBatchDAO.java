@@ -5,9 +5,10 @@ import java.util.List;
 import dto01917.ProduceBatchDTO;
 
 public interface ProduceBatchDAO {
-	ProduceBatchDTO getProduceBatch(int rbId) throws DALException;
-	List<ProduceBatchDTO> getProduceBatchList() throws DALException;
-	List<ProduceBatchDTO> getProduceBatchList(int produceId) throws DALException;
-	void createProduceBatch(ProduceBatchDTO producebatch) throws DALException;
-	void updateProduceBatch(ProduceBatchDTO producebatch) throws DALException;
+	ProduceBatchDTO getRaavareBatch(int rbId) throws DALException;
+	List<ProduceBatchDTO> getRaavareBatchList() throws DALException;
+	List<ProduceBatchDTO> getRaavareBatchList(int raavareId) throws DALException;
+	void createRaavareBatch(ProduceBatchDTO raavarebatch) throws DALException;
+	void updateRaavareBatch(ProduceBatchDTO raavarebatch) throws DALException;
 }
+
