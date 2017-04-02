@@ -1,12 +1,12 @@
 package dto01917;
 
-public class RaavareBatchDTO
+public class ProduceBatchDTO
 {
 	int rbId;                     // i omraadet 1-99999999
 	int raavareId;             // i omraadet 1-99999999
 	double maengde;             // kan vaere negativ 
 
-	public RaavareBatchDTO(int rbId, int raavareId, double maengde)
+	public ProduceBatchDTO(int rbId, int raavareId, double maengde)
 	{
 		this.rbId = rbId;
 		this.raavareId = raavareId;
