@@ -7,7 +7,7 @@ package dto01917;
  * @version 1.2
  */
 
-public class RaavareDTO 
+public class ProduceDTO
 {
     /** i omraadet 1-99999999 vaelges af brugerne */
     int raavareId;                     
@@ -16,7 +16,7 @@ public class RaavareDTO
     /** min. 2 max. 20 karakterer */
     String leverandoer;         
 	
-	public RaavareDTO(int raavareId, String raavareNavn, String leverandoer)
+	public ProduceDTO(int raavareId, String raavareNavn, String leverandoer)
 	{
 		this.raavareId = raavareId;
 		this.raavareNavn = raavareNavn;
