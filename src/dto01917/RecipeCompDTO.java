@@ -1,13 +1,13 @@
 package dto01917;
 
-public class ReceptKompDTO
+public class RecipeCompDTO
 {
 	int receptId;                  // auto genereres fra 1..n   
 	int raavareId;             // i omraadet 1-99999999
 	double nomNetto;            // skal vaere positiv og passende stor
 	double tolerance;           // skal vaere positiv og passende stor
 	
-	public ReceptKompDTO(int receptId, int raavareId, double nomNetto, double tolerance)
+	public RecipeCompDTO(int receptId, int raavareId, double nomNetto, double tolerance)
 	{
 		this.receptId = receptId;
 		this.raavareId = raavareId;

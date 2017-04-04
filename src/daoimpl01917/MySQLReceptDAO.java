@@ -8,29 +8,29 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptDAO;
-import dto01917.ReceptDTO;
+import dto01917.RecipeDTO;
 
 public class MySQLReceptDAO implements ReceptDAO {
 
 	@Override
-	public ReceptDTO getRecept(int receptId) throws DALException {		
+	public RecipeDTO getRecept(int receptId) throws DALException {		
 		ResultSet rs = Connector.doQuery("SELECT * FROM recipe WHERE recipe_id = " + receptId + ";");
 		try {
 			if (!rs.first())
 				throw new DALException("Recipe with id " + receptId + " does not exist");
-			return new ReceptDTO(rs.getInt("recipe_id"), rs.getString("recipe_name"));
+			return new RecipeDTO(rs.getInt("recipe_id"), rs.getString("recipe_name"));
 		} catch (SQLException e) {
 			throw new DALException(e);
 		}
 	}
 
 	@Override
-	public List<ReceptDTO> getReceptList() throws DALException {
-		List<ReceptDTO> list = new ArrayList<ReceptDTO>();
+	public List<RecipeDTO> getReceptList() throws DALException {
+		List<RecipeDTO> list = new ArrayList<RecipeDTO>();
 		ResultSet rs = Connector.doQuery("SELECT * FROM recipe;");
 		try {
 			while (rs.next()) {
-				list.add(new ReceptDTO(rs.getInt("recipe_id"), rs.getString("recipe_name")));
+				list.add(new RecipeDTO(rs.getInt("recipe_id"), rs.getString("recipe_name")));
 			}
 		} catch (SQLException e) {
 			throw new DALException(e);
@@ -39,7 +39,7 @@ public class MySQLReceptDAO implements ReceptDAO {
 	}
 
 	@Override
-	public void createRecept(ReceptDTO recept) throws DALException {
+	public void createRecept(RecipeDTO recept) throws DALException {
 		Connector.doUpdate("CALL create_recipe(" + recept.getReceptNavn() + ");");
 	}
 
