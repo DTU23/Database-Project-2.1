@@ -1,14 +1,13 @@
 package dto01917;
 
-public class RecipeCompDTO
-{
+public class RecipeCompDTO {
+	
 	int recipeId;                  // auto genereres fra 1..n   
 	int produceId;             // i omraadet 1-99999999
 	double nomNetto;            // skal vaere positiv og passende stor
 	double tolerance;           // skal vaere positiv og passende stor
 	
-	public RecipeCompDTO(int recipeId, int produceId, double nomNetto, double tolerance)
-	{
+	public RecipeCompDTO(int recipeId, int produceId, double nomNetto, double tolerance) {
 		this.recipeId = recipeId;
 		this.produceId = produceId;
 		this.nomNetto = nomNetto;
@@ -23,7 +22,6 @@ public class RecipeCompDTO
 	public void setNomNetto(double nomNetto) { this.nomNetto = nomNetto; }
 	public double getTolerance() { return tolerance; }
 	public void setTolerance(double tolerance) { this.tolerance = tolerance; }
-	public String toString() { 
-		return recipeId + "\t" + produceId + "\t" + nomNetto + "\t" + tolerance; 
-	}
+	public String toString() { return recipeId + "\t" + produceId + "\t" + nomNetto + "\t" + tolerance; }
+	
 }
