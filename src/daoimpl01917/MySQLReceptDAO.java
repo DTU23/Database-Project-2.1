@@ -7,10 +7,10 @@ import java.util.List;
 
 import connector01917.Connector;
 import daointerfaces01917.DALException;
-import daointerfaces01917.ReceptDAO;
+import daointerfaces01917.RecipeDAO;
 import dto01917.RecipeDTO;
 
-public class MySQLReceptDAO implements ReceptDAO {
+public class MySQLReceptDAO implements RecipeDAO {
 
 	@Override
 	public RecipeDTO getRecept(int receptId) throws DALException {		
