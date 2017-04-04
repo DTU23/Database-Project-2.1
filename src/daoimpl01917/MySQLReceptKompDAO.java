@@ -67,6 +67,7 @@ public class MySQLReceptKompDAO implements ReceptKompDAO {
 		Connector.doQuery("CALL create_recipe_component(" + receptkomponent.getReceptId() + ", " + receptkomponent.getRaavareId() + ", " + receptkomponent.getNomNetto() + ", " + receptkomponent.getTolerance() + ");");		
 	}
 
+	//TODO SKAL SLETTES
 	@Override
 	public void updateReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
 		Connector.doQuery("UPDATE recipecomponent SET nom_netto=" + receptkomponent.getNomNetto() + ", tolerance=" + receptkomponent.getTolerance() + " WHERE recipe_id=" + receptkomponent.getReceptId() + " AND produce_id=" + receptkomponent.getRaavareId() + ";");		

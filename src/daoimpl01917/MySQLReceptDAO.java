@@ -43,9 +43,4 @@ public class MySQLReceptDAO implements ReceptDAO {
 		Connector.doUpdate("CALL create_recipe(" + recept.getReceptNavn() + ");");
 	}
 
-	@Override
-	public void updateRecept(ReceptDTO recept) throws DALException {
-		Connector.doUpdate("UPDATE recipe SET recipe_name=" + recept.getReceptNavn() + "WHERE recipe_id=" + recept.getReceptId() + ");");	
-	}
-
 }
