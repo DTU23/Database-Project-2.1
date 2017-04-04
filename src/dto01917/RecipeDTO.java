@@ -10,23 +10,23 @@ package dto01917;
 public class RecipeDTO 
 {
 	/** Recept nr i omraadet 1-99999999 */
-	int receptId;
+	int recipeId;
 	/** Receptnavn min. 2 max. 20 karakterer */
-	String receptNavn;
+	String recipeName;
 	/** liste af kompenenter i recepten */
 	
     
-	public RecipeDTO(int receptId, String receptNavn)
+	public RecipeDTO(int recipeId, String recipeName)
 	{
-        this.receptId = receptId;
-        this.receptNavn = receptNavn;
+        this.recipeId = recipeId;
+        this.recipeName = recipeName;
     }
 
-    public int getReceptId() { return receptId; }
-	public void setReceptId(int receptId) { this.receptId = receptId; }
-	public String getReceptNavn() { return receptNavn; }
-	public void setReceptNavn(String receptNavn) { this.receptNavn = receptNavn; }
+    public int getRecipeId() { return recipeId; }
+	public void setRecipeId(int receptId) { this.recipeId = receptId; }
+	public String getRecipeName() { return recipeName; }
+	public void setRecipeName(String recipeName) { this.recipeName = recipeName; }
 	public String toString() { 
-		return receptId + "\t" + receptNavn; 
+		return recipeId + "\t" + recipeName; 
 	}
 }

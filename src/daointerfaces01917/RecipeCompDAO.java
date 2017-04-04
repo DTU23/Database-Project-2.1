@@ -5,8 +5,8 @@ import java.util.List;
 import dto01917.RecipeCompDTO;
 
 public interface RecipeCompDAO {
-	RecipeCompDTO getReceptKomp(int receptId, int raavareId) throws DALException;
-	List<RecipeCompDTO> getReceptKompList(int receptId) throws DALException;
-	List<RecipeCompDTO> getReceptKompList() throws DALException;
-	void createReceptKomp(RecipeCompDTO receptkomponent) throws DALException;
+	RecipeCompDTO getRecipeComp(int recipeId, int produceId) throws DALException;
+	List<RecipeCompDTO> getRecipeCompList(int recipeId) throws DALException;
+	List<RecipeCompDTO> getRecipeCompList() throws DALException;
+	void createRecipeComp(RecipeCompDTO recipecomponent) throws DALException;
 }

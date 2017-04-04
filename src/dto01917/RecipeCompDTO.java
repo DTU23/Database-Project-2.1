@@ -2,28 +2,28 @@ package dto01917;
 
 public class RecipeCompDTO
 {
-	int receptId;                  // auto genereres fra 1..n   
-	int raavareId;             // i omraadet 1-99999999
+	int recipeId;                  // auto genereres fra 1..n   
+	int produceId;             // i omraadet 1-99999999
 	double nomNetto;            // skal vaere positiv og passende stor
 	double tolerance;           // skal vaere positiv og passende stor
 	
-	public RecipeCompDTO(int receptId, int raavareId, double nomNetto, double tolerance)
+	public RecipeCompDTO(int recipeId, int produceId, double nomNetto, double tolerance)
 	{
-		this.receptId = receptId;
-		this.raavareId = raavareId;
+		this.recipeId = recipeId;
+		this.produceId = produceId;
 		this.nomNetto = nomNetto;
 		this.tolerance = tolerance;
 	}
 
-	public int getReceptId() { return receptId; }
-	public void setReceptId(int receptId) { this.receptId = receptId; }
-	public int getRaavareId() { return raavareId; }
-	public void setRaavareId(int raavareId) { this.raavareId = raavareId; }
+	public int getRecipeId() { return recipeId; }
+	public void setRecipeId(int recipeId) { this.recipeId = recipeId; }
+	public int getProduceId() { return produceId; }
+	public void setProduceId(int produceId) { this.produceId = produceId; }
 	public double getNomNetto() { return nomNetto; }
 	public void setNomNetto(double nomNetto) { this.nomNetto = nomNetto; }
 	public double getTolerance() { return tolerance; }
 	public void setTolerance(double tolerance) { this.tolerance = tolerance; }
 	public String toString() { 
-		return receptId + "\t" + raavareId + "\t" + nomNetto + "\t" + tolerance; 
+		return recipeId + "\t" + produceId + "\t" + nomNetto + "\t" + tolerance; 
 	}
 }

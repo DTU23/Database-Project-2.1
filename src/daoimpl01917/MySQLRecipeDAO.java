@@ -13,7 +13,7 @@ import dto01917.RecipeDTO;
 public class MySQLRecipeDAO implements RecipeDAO {
 
 	@Override
-	public RecipeDTO getRecept(int receptId) throws DALException {		
+	public RecipeDTO getRecipe(int receptId) throws DALException {		
 		ResultSet rs = Connector.doQuery("SELECT * FROM recipe WHERE recipe_id = " + receptId + ";");
 		try {
 			if (!rs.first())
@@ -25,7 +25,7 @@ public class MySQLRecipeDAO implements RecipeDAO {
 	}
 
 	@Override
-	public List<RecipeDTO> getReceptList() throws DALException {
+	public List<RecipeDTO> getRecipeList() throws DALException {
 		List<RecipeDTO> list = new ArrayList<RecipeDTO>();
 		ResultSet rs = Connector.doQuery("SELECT * FROM recipe;");
 		try {
@@ -39,8 +39,8 @@ public class MySQLRecipeDAO implements RecipeDAO {
 	}
 
 	@Override
-	public void createRecept(RecipeDTO recept) throws DALException {
-		Connector.doUpdate("CALL create_recipe(" + recept.getReceptNavn() + ");");
+	public void createRecipe(RecipeDTO recept) throws DALException {
+		Connector.doUpdate("CALL create_recipe(" + recept.getRecipeName() + ");");
 	}
 
 }
