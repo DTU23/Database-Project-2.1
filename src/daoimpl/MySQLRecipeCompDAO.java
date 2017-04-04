@@ -25,7 +25,7 @@ public class MySQLRecipeCompDAO implements RecipeCompDAO {
 	@Override
 	public List<RecipeCompDTO> getRecipeCompList(int recipeId) throws DALException {
 		List<RecipeCompDTO> list = new ArrayList<RecipeCompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM recipecomponent WHERE recipe_id=" + recipeId + ";");
+		ResultSet rs = Connector.doQuery("SELECT * FROM recipe_list WHERE recipe_id=" + recipeId + ";");
 		
 		try {
 			while (rs.next()) {
@@ -45,7 +45,7 @@ public class MySQLRecipeCompDAO implements RecipeCompDAO {
 	@Override
 	public List<RecipeCompDTO> getRecipeCompList() throws DALException {
 		List<RecipeCompDTO> list = new ArrayList<RecipeCompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM recipecomponent;");
+		ResultSet rs = Connector.doQuery("SELECT * FROM recipe_list;");
 		
 		try {
 			while (rs.next()) {
