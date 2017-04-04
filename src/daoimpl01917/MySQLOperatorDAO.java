@@ -14,7 +14,7 @@ import dto01917.OperatorDTO;
 public class MySQLOperatorDAO implements OperatorDAO {
 
 	public OperatorDTO getOperator(int oprId) throws DALException {
-		ResultSet rs = Connector.doQuery("SELECT * FROM operatoer WHERE opr_id = " + oprId + ";");
+		ResultSet rs = Connector.doQuery("SELECT * FROM operator WHERE opr_id = " + oprId + ";");
 		try {
 			if (!rs.first()) throw new DALException("Operator with id " + oprId + " does not exist");
 			return new OperatorDTO (rs.getInt("opr_id"), rs.getString("opr_name"), rs.getString("ini"), rs.getString("cpr"), rs.getString("password"), rs.getBoolean("admin"), rs.getString("role"));
@@ -34,7 +34,7 @@ public class MySQLOperatorDAO implements OperatorDAO {
 
 	public List<OperatorDTO> getOperatorList() throws DALException {
 		List<OperatorDTO> list = new ArrayList<OperatorDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM operator;");
+		ResultSet rs = Connector.doQuery("SELECT * FROM operator_list;");
 		try
 		{
 			while (rs.next()) 
@@ -45,14 +45,4 @@ public class MySQLOperatorDAO implements OperatorDAO {
 		catch (SQLException e) { throw new DALException(e); }
 		return list;
 	}
-
-	public String getOperatorNameFromID(int oprId) throws DALException {
-		ResultSet rs = Connector.doQuery("CALL get_operator_name_from_id(" + oprId + ");");
-		try {
-			if (!rs.first()) throw new DALException("Operator with id " + oprId + " does not exist");
-			return rs.getString("opr_name");
-		}
-		catch (SQLException e) {throw new DALException(e); }
-	}
 }
-
