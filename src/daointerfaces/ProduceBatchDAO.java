@@ -1,8 +1,8 @@
-package daointerfaces01917;
+package daointerfaces;
 
 import java.util.List;
 
-import dto01917.ProduceBatchDTO;
+import dto.ProduceBatchDTO;
 
 public interface ProduceBatchDAO {
 	ProduceBatchDTO getRaavareBatch(int rbId) throws DALException;

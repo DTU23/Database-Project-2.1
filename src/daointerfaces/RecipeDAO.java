@@ -1,8 +1,8 @@
-package daointerfaces01917;
+package daointerfaces;
 
 import java.util.List;
 
-import dto01917.RecipeDTO;
+import dto.RecipeDTO;
 
 public interface RecipeDAO {
 	RecipeDTO getRecipe(int recipeId) throws DALException;

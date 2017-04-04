@@ -1,8 +1,8 @@
-package daointerfaces01917;
+package daointerfaces;
 
 import java.util.List;
 
-import dto01917.ProductBatchDTO;
+import dto.ProductBatchDTO;
 
 public interface ProductBatchDAO {
 	ProductBatchDTO getProductBatch(int pbId) throws DALException;

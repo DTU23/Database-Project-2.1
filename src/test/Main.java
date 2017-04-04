@@ -1,11 +1,11 @@
-package test01917;
+package test;
 
 import java.sql.SQLException;
 
-import connector01917.Connector;
-import daoimpl01917.MySQLOperatorDAO;
-import daointerfaces01917.DALException;
-import dto01917.OperatorDTO;
+import connector.Connector;
+import daoimpl.MySQLOperatorDAO;
+import daointerfaces.DALException;
+import dto.OperatorDTO;
 
 public class Main {
 	public static void main(String[] args) {

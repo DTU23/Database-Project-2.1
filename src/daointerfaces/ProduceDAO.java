@@ -1,8 +1,8 @@
-package daointerfaces01917;
+package daointerfaces;
 
 import java.util.List;
 
-import dto01917.ProduceDTO;
+import dto.ProduceDTO;
 
 public interface ProduceDAO {
 	ProduceDTO getProduce(int raavareId) throws DALException;

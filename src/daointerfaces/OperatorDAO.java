@@ -1,8 +1,8 @@
-package daointerfaces01917;
+package daointerfaces;
 
 import java.util.List;
 
-import dto01917.OperatorDTO;
+import dto.OperatorDTO;
 
 public interface OperatorDAO {
 	OperatorDTO getOperator(int oprId) throws DALException;

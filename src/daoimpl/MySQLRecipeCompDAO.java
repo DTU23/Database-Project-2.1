@@ -1,14 +1,14 @@
-package daoimpl01917;
+package daoimpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import connector01917.Connector;
-import daointerfaces01917.DALException;
-import daointerfaces01917.RecipeCompDAO;
-import dto01917.RecipeCompDTO;
+import connector.Connector;
+import daointerfaces.DALException;
+import daointerfaces.RecipeCompDAO;
+import dto.RecipeCompDTO;
 
 public class MySQLRecipeCompDAO implements RecipeCompDAO {
 
