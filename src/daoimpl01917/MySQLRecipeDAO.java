@@ -10,7 +10,7 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.RecipeDAO;
 import dto01917.RecipeDTO;
 
-public class MySQLReceptDAO implements RecipeDAO {
+public class MySQLRecipeDAO implements RecipeDAO {
 
 	@Override
 	public RecipeDTO getRecept(int receptId) throws DALException {		
